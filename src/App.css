@@ -111,12 +111,56 @@
   flex-direction: column;
   justify-content: center;
   padding: 80px 5%;
+  position: relative;
 }
 
 .chapter-1,
 .chapter-4 {
   max-width: 700px;
   margin: 0 auto;
+}
+
+/* Chapter 1: Photo Accent Circle */
+.chapter-photo-accent {
+  position: absolute;
+  top: 60px;
+  right: -80px;
+  z-index: 0;
+}
+
+.photo-accent-circle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #E8D5C4 0%, #D4C5B9 100%);
+  border: 3px solid #F9F7F2;
+  box-shadow: 0 10px 40px rgba(214, 140, 140, 0.15);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-accent-placeholder {
+  font-size: 60px;
+  opacity: 0.4;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+@media (max-width: 768px) {
+  .chapter-photo-accent {
+    top: 20px;
+    right: 10px;
+  }
+  
+  .photo-accent-circle {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .photo-accent-placeholder {
+    font-size: 36px;
+  }
 }
 
 .chapter-title {
@@ -265,117 +309,67 @@
   font-style: italic;
 }
 
-.gallery-container {
-  max-width: 600px;
+/* Chapter 3: Vertical scroll gallery – images in normal flow */
+.gallery-list {
+  max-width: 520px;
   margin: 0 auto;
-  position: relative;
-  height: 450px;
-}
-
-.photo-card {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 500px;
-  height: 350px;
-  border-radius: 8px;
-  transition: box-shadow 0.8s cubic-bezier(0.43, 0.13, 0.23, 0.96);
-  border: 1px solid rgba(74, 63, 63, 0.1);
-  overflow: hidden;
-}
-
-.photo-number {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  z-index: 2;
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  color: #4A3F3F;
-  opacity: 0.5;
-  letter-spacing: 1px;
-  background: rgba(255, 255, 255, 0.5);
-  padding: 4px 10px;
-  border-radius: 12px;
-}
-
-.photo-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+  gap: 48px;
 }
 
-.photo-content img {
-  position: absolute;
-  top: 0;
-  left: 0;
+.gallery-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(74, 63, 63, 0.12);
+  border: 1px solid rgba(214, 140, 140, 0.2);
+}
+
+.gallery-card-image-wrap {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #E8D5C4;
+}
+
+.gallery-card-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 8px;
   display: block;
-  z-index: 0;
 }
 
-.photo-placeholder-large {
-  font-size: 80px;
-  opacity: 0.3;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
-}
-
-.photo-location {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 16px;
-  color: #4A3F3F;
-  opacity: 0.5;
-}
-
-.photo-caption {
-  position: absolute;
-  bottom: 30px;
-  left: 30px;
-  right: 30px;
-  z-index: 2;
-}
-
-.photo-caption p {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: clamp(18px, 3vw, 24px);
-  color: #4A3F3F;
-  margin: 0;
-}
-
-.photo-corner {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 60px;
-  height: 60px;
-  z-index: 2;
-  border-top: 2px solid rgba(214, 140, 140, 0.3);
-  border-right: 2px solid rgba(214, 140, 140, 0.3);
-  border-radius: 0 8px 0 0;
-}
-
-.photo-placeholder {
+.gallery-card-placeholder {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 48px;
-  opacity: 0.2;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: #4A3F3F;
+  opacity: 0.5;
+  font-size: 18px;
+}
+
+.gallery-card-caption {
+  padding: 20px 24px 24px;
+}
+
+.gallery-card-caption p {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(18px, 3vw, 22px);
+  color: #4A3F3F;
+  margin: 0 0 6px 0;
+}
+
+.gallery-card-location {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #D68C8C;
+  letter-spacing: 0.5px;
 }
 
 /* Chapter 4: Love Letter */
@@ -390,6 +384,50 @@
 
 .cursor {
   margin-left: 2px;
+}
+
+/* Chapter 4: Photo Frame Accent */
+.letter-photo-frame {
+  position: absolute;
+  bottom: 80px;
+  right: -120px;
+  width: 140px;
+  height: 140px;
+  background: #F9F7F2;
+  padding: 12px;
+  box-shadow: 0 8px 30px rgba(74, 63, 63, 0.15);
+  transform-origin: center;
+  z-index: 0;
+}
+
+.frame-inner {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #E8D5C4 0%, #C9B8A8 100%);
+  border: 2px solid rgba(214, 140, 140, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.frame-placeholder {
+  font-size: 48px;
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .letter-photo-frame {
+    bottom: 20px;
+    right: 10px;
+    width: 80px;
+    height: 80px;
+    padding: 8px;
+  }
+  
+  .frame-placeholder {
+    font-size: 28px;
+  }
 }
 
 /* Forever Button */
@@ -471,12 +509,12 @@
     transform: none !important;
   }
 
-  .gallery-container {
-    height: 300px;
+  .gallery-list {
+    gap: 32px;
+    padding: 0 8px;
   }
 
-  .photo-card {
-    max-width: 100%;
-    height: 280px;
+  .gallery-card-image-wrap {
+    aspect-ratio: 3 / 2;
   }
 }
